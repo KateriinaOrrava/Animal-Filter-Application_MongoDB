@@ -1,10 +1,9 @@
 import AddNewAnimal from './COMPONENTS/AddNewAnimal/AddNewAnimal';
-import { useAppDispatch, useAppSelector } from './REDUX/Hooks';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './App.module.css';
 import {
   useGetAnimalByTypeQuery,
-  useDeleteAnimalMutation
+  useDeleteAnimalMutation,
 } from './REDUX/AnimalApi';
 function App() {
   const [selectedType, setSelectedType] = useState('all');
@@ -15,9 +14,9 @@ function App() {
   const [deleteAnimal, response] = useDeleteAnimalMutation();
   if (response.error) {
     return console.log(`CAN'T BE DELETED`, response.error);
-  } 
+  }
 
-  if (data==undefined) {
+  if (data == undefined) {
     return <h3>NOTHING TO SHOW IN {selectedType} category</h3>;
   }
 

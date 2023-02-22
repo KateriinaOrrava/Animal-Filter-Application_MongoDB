@@ -1,11 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-export type Animal = {
-  _id?: string;
-  name: string;
-  type: string;
-  img: string;
-};
+import { Animal } from '../Types/AnimalTypes';
 
 export const animalApi = createApi({
   reducerPath: 'animalApi',
