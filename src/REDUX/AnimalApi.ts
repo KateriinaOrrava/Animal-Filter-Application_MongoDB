@@ -16,8 +16,12 @@ export const animalApi = createApi({
     }),
 
     deleteAnimal: builder.mutation<void, string>({
-      query: (id) => `/animalDelete/${id}`,
-      invalidatesTags: ['Animals']
+      query: (name) => ({
+        url: `/animalToDelete/${name}`,
+        method: 'DELETE',
+        credentials: 'include',
+      }),
+      invalidatesTags: ['Animals'],
     }),
 
     addNewAnimal: builder.mutation<Animal, Partial<Animal>>({

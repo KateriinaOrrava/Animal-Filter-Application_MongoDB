@@ -5,6 +5,7 @@ import {
   useGetAnimalByTypeQuery,
   useDeleteAnimalMutation,
 } from './REDUX/AnimalApi';
+
 function App() {
   const [selectedType, setSelectedType] = useState('all');
 
@@ -12,12 +13,10 @@ function App() {
   console.log('by type animal', data);
 
   const [deleteAnimal, response] = useDeleteAnimalMutation();
-  if (response.error) {
-    return console.log(`CAN'T BE DELETED`, response.error);
-  }
 
-  if (data == undefined) {
-    return <h3>NOTHING TO SHOW IN {selectedType} category</h3>;
+  if (response.error) {  
+    console.log(response.endpointName)
+    return console.log(`CAN'T BE DELETED`,  response.error);
   }
 
   if (isLoading) {
@@ -64,7 +63,8 @@ function App() {
               <button
                 className={styles.deleteButton}
                 onClick={() => {
-                  deleteAnimal(_id!);
+                  deleteAnimal(name)
+                  console.log(name);
                 }}
               >
                 ✕

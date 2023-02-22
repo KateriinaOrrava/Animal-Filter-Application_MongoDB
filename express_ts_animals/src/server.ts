@@ -2,6 +2,7 @@ import express from "express";
 import { Request, Response } from "express";
 import bodyparser from "body-parser";
 import cors from "cors";
+
 import mongoose from "mongoose";
 import Animal from "./Animal";
 const app = express();
@@ -68,18 +69,18 @@ app.post(`/addAnimal`, async (req: Request, res: Response) => {
   }
 });
 
-app.delete(`/animalDelete/:id`, async (req: Request, res: Response) => {
-  const value = req.params.id;
+app.delete(`/animalToDelete/:name`, async (req: Request, res: Response) => {
+  const value = req.params.name;
   res.send(value);
   try {
-    await Animal.deleteOne({ _id: value });
+    await Animal.deleteOne({ name: value });
   } catch (error) {
     throw error;
   }
 });
 
 app.get("/1", (req: Request, res: Response) => {
-  res.send("Application works!"); 
+  res.send("Application works!");
 });
 
 app.listen(3004, () => {
