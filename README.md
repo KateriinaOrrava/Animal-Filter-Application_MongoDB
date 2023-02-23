@@ -1,4 +1,4 @@
-# Animal-filter-App
+# Animal-Filter-App
 Animal Filter App
 
 Using Redux, RTKQuery, MongoDB to create an application that allows to add, delete and sort (by species) animal cards.
