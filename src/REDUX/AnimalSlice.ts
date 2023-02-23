@@ -18,6 +18,7 @@ const animalSlice = createSlice({
     setAllAnimals: (state, action: PayloadAction<Animal[]>) => {
       state.animals = action.payload;
     },
+
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },

@@ -9,7 +9,7 @@ import {
 function App() {
   const [selectedType, setSelectedType] = useState('all');
 
-  const { data, isLoading, error } = useGetAnimalByTypeQuery(selectedType);
+  const { data, isLoading } = useGetAnimalByTypeQuery(selectedType);
   console.log('by type animal', data);
 
   const [deleteAnimal, response] = useDeleteAnimalMutation();
@@ -23,7 +23,7 @@ function App() {
     return <h3>LOADING ...</h3>;
   }
 
-  if (error) {
+  if (!data) {
     return <h3>CAN'T BE LOADED</h3>;
   }
 
@@ -54,7 +54,7 @@ function App() {
       </form>
 
       <div className={styles.AllAnimalCards}>
-        {data!.map(({ name, type, img, _id }) => {
+        {data.map(({ name, type, img, _id }) => {
           return (
             <div className={styles.CardWithAnimal} key={_id}>
               <img src={img} alt={name} className={styles.animalImg} />

@@ -9,17 +9,18 @@ export const animalApi = createApi({
 
     getAnimals: builder.query<Animal[], void>({
       query: () => `animals/`,
+      providesTags:['Animals']
     }),
 
     getAnimalByType: builder.query<Animal[], string>({
       query: (type) => `animalType/${type}`,
+      providesTags:['Animals']
     }),
 
     deleteAnimal: builder.mutation<void, string>({
       query: (name) => ({
         url: `/animalToDelete/${name}`,
         method: 'DELETE',
-        credentials: 'include',
       }),
       invalidatesTags: ['Animals'],
     }),

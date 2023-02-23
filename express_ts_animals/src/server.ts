@@ -71,12 +71,12 @@ app.post(`/addAnimal`, async (req: Request, res: Response) => {
 
 app.delete(`/animalToDelete/:name`, async (req: Request, res: Response) => {
   const value = req.params.name;
-  res.send(value);
   try {
     await Animal.deleteOne({ name: value });
   } catch (error) {
     throw error;
   }
+  res.json(value);
 });
 
 app.get("/1", (req: Request, res: Response) => {
